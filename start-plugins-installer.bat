@@ -1,6 +1,6 @@
 @echo off
 
-@echo Starting the Irene Voice Assistant (WEBAPI mode)...
+@echo Starting the Irene Voice Assistant (plugins installer)...
 
 cd /D "%~dp0"
 
@@ -13,7 +13,7 @@ if not exist "%MAMBA_ROOT_PREFIX%\condabin\micromamba.bat" (
 call "%MAMBA_ROOT_PREFIX%\condabin\micromamba.bat" activate "%INSTALL_ENV_DIR%" || ( echo MicroMamba hook not found. && goto end )
 cd Irene-Voice-Assistant
 
-call python runva_settings_manager.py
+call python runva_plugin_installer.py
 
 :end
 pause
