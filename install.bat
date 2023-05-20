@@ -14,7 +14,8 @@ cls
 echo What kind of installation do you want?
 echo.
 echo A) Fast
-echo B) Full (needed for highquality Silero TTS; torch packet ~1Gb will be installed)
+echo B) With vosk-tts (lite but stable TTS)
+echo C) Full (needed for highquality Silero TTS; torch packet ~1Gb will be installed)
 echo.
 set /p "gpuchoice=Input> "
 set gpuchoice=%gpuchoice:~0,1%
@@ -23,8 +24,12 @@ if /I "%gpuchoice%" == "A" (
     set "PACKAGES_TO_INSTALL=python=3.10.9 git"
     set "CHANNEL=-c conda-forge -c pytorch"
 ) else if /I "%gpuchoice%" == "B" (
-    set "PACKAGES_TO_INSTALL=pytorch torchvision torchaudio cpuonly git"
+    set "PACKAGES_TO_INSTALL=python=3.10.9 git"
     set "CHANNEL=-c conda-forge -c pytorch"
+) else if /I "%gpuchoice%" == "C" (
+    set "PACKAGES_TO_INSTALL=python=3.10.9 pytorch torchvision torchaudio cpuonly git"
+    set "CHANNEL=-c conda-forge -c pytorch"
+
 ) else (
     echo Invalid choice. Exiting...
     exit
@@ -75,6 +80,10 @@ if not exist "%INSTALL_ENV_DIR%\python.exe" ( echo. && echo Conda environment is
 
 @rem activate installer env
 call "%MAMBA_ROOT_PREFIX%\condabin\micromamba.bat" activate "%INSTALL_ENV_DIR%" || ( echo. && echo MicroMamba hook not found. && goto end )
+
+if /I "%gpuchoice%" == "B" (
+    call python -m pip install vosk-tts~=0.3.45
+)
 
 @rem clone the repository and install the pip requirements
 if exist Irene-Voice-Assistant\ (
