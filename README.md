@@ -27,9 +27,19 @@
 
 Основано на https://github.com/oobabooga/one-click-installers
 
+## Для пользователей Windows 8 (возможно, и Windows 7, не тестировалось)
+
+**Проблема:** В Windows 8 нет команды CURL, которая скачивает Micromamba, которая все ставит.
+
+**Решение:** Вручную скачайте micromamba: https://github.com/mamba-org/micromamba-releases/releases/download/1.4.0-0/micromamba-win-64
+и положите EXE-файл, так чтобы он назывался <папка_скаченного_репозитория>/installer_files/mamba/micromamba.exe 
+
+После этого запустите install - установка должна корректно запуститься.
+
 ## Перенос на другую машину / в другое расположение
 
 Установка переносимая; но после переноса в другое место будет выдавать ошибку "Micromamba not found"
 
 Для решения проблемы удалите все BAT-файлы из installer_files\mamba\condabin и перезапустите Ирину - 
 BAT-файлы будут перегенерированы.
+
