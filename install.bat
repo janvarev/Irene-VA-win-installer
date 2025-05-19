@@ -37,7 +37,7 @@ set PATH=%PATH%;%SystemRoot%\system32
 
 set MAMBA_ROOT_PREFIX=%cd%\installer_files\mamba
 set INSTALL_ENV_DIR=%cd%\installer_files\env
-set MICROMAMBA_DOWNLOAD_URL=https://github.com/mamba-org/micromamba-releases/releases/download/1.4.0-0/micromamba-win-64
+set MICROMAMBA_DOWNLOAD_URL=https://github.com/mamba-org/micromamba-releases/releases/download/2.1.1-0/micromamba-win-64
 set REPO_URL=https://github.com/janvarev/Irene-Voice-Assistant.git
 set umamba_exists=F
 
